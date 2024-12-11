@@ -1,0 +1,28 @@
+body {
+  background-color: lightgray;
+  height: 100vh;
+}
+header {
+  background-color: lightpink;
+  padding: 1em;
+}
+.logo {
+  color: white;
+  font-size: 10em;
+}
+.bottom-navbar {
+  bottom: 0;
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+}
+ul {
+  list-style-type: none;
+}
+ul li {
+  margin: 2em;
+}
