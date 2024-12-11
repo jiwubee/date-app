@@ -1,28 +1,76 @@
 body {
   background-color: lightgray;
+  margin: 0;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 35rem;
+  height: 100%;
+  border-radius: 1em;
+}
+
 header {
   background-color: lightpink;
   padding: 1em;
+  width: 100%;
+  border-radius: 1em 1em 0 0;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .logo {
-  color: white;
-  font-size: 10em;
+  font-size: 3em;
+  font-weight: bold;
 }
+.account {
+  font-size: 1.5rem;
+}
+
+.api {
+  height: 20vh;
+  margin: 1em auto;
+  width: 90%;
+  background-color: lightgray;
+  border-radius: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 2em;
+}
+
 .bottom-navbar {
-  bottom: 0;
   background-color: white;
-  overflow: hidden;
   position: fixed;
-  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35em;
   display: flex;
-  margin: 0;
-  justify-content: space-between;
+  justify-content: space-around;
+  border-radius: 0 0 1em 1em;
+  z-index: 10;
+  box-shadow: 0px -3px 2px -1px lightgray;
 }
+
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
+
 ul li {
-  margin: 2em;
+  font-size: 1em;
+  padding: 1em;
+  text-align: center;
 }
