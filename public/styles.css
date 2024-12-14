@@ -157,3 +157,36 @@ ul li:hover {
 .popup .form span:hover {
   color: pink;
 }
+
+.api {
+  padding: 10em;
+  background-color: lightgreen;
+  height: 100vh;
+}
+
+/* .user-list {
+  margin: 2em 0;
+  padding: 1em;
+}
+
+.user-list h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.user-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  padding: 1em;
+  margin: 0.5em 0;
+  background-color: lightgray;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.user:hover {
+  background-color: lightgreen;
+} */

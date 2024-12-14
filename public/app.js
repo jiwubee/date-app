@@ -6,7 +6,7 @@ const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const toRegister = document.getElementById("toRegister");
 const toLogin = document.getElementById("toLogin");
-
+const api = document.getElementById("api");
 // Open and close popup
 accountButton.addEventListener("click", () => {
   popup.style.display = "block";
@@ -92,7 +92,35 @@ document.getElementById("loginButton").addEventListener("click", async () => {
   if (response.ok && user.name === username && user.password === password) {
     alert("Login successful!");
     popup.style.display = "none"; // Close the popup
+    api.style.display = "none";
   } else {
     alert("Invalid username or password");
   }
 });
+function updateAccount() {
+  app.put("/users/:id", (req, res) => {
+    const { id } = req.params;
+    const { name, age, description } = req.body;
+
+    if (!users[id]) {
+      return res.status(404).json({ error: "Person not found." });
+    }
+
+    if (!name && !age && !description) {
+      return res.status(400).json({
+        error:
+          "At least one field (name, age, or description) must be provided.",
+      });
+    }
+
+    // Update only the provided fields, leaving others unchanged
+    users[id] = {
+      name: name || users[id].name,
+      age: age || users[id].age,
+      description:
+        description !== undefined ? description : users[id].description,
+    };
+
+    res.json({ id, ...users[id] });
+  });
+}
