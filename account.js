@@ -14,7 +14,14 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Users API
-const users = {};
+const users = {
+  1: { name: "Alice", password: "password123" },
+  2: { name: "Bob", password: "securepassword456" },
+  3: { name: "Charlie", password: "charlie123" },
+  4: { name: "David", password: "davidsupersecret789" },
+  5: { name: "Eve", password: "evepassword321" },
+  6: { name: "Frank", password: "frankisawesome001" },
+};
 
 app.post("/users", (req, res) => {
   const { name, password } = req.body;
@@ -68,4 +75,13 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+// Endpoint to get all users
+app.get("/users", (req, res) => {
+  const allUsers = Object.keys(users).map((id) => ({
+    id,
+    ...users[id],
+  }));
+  res.json(allUsers);
 });

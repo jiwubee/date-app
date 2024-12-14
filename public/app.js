@@ -6,8 +6,25 @@ const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const toRegister = document.getElementById("toRegister");
 const toLogin = document.getElementById("toLogin");
-const api = document.getElementById("api");
-// Open and close popup
+const block = document.getElementById("block");
+
+// Check if the user is logged in and show the appropriate content
+function checkLoginStatus() {
+  const userId = localStorage.getItem("userId");
+
+  if (userId) {
+    // User is logged in, show matches
+    document.getElementById("matches").style.display = "block";
+    document.getElementById("notLoggedIn").style.display = "none";
+  } else {
+    // User is not logged in, show "not logged in" message
+    document.getElementById("matches").style.display = "none";
+    document.getElementById("notLoggedIn").style.display = "block";
+  }
+}
+
+window.onload = checkLoginStatus;
+
 accountButton.addEventListener("click", () => {
   popup.style.display = "block";
 });
@@ -16,7 +33,6 @@ closeBtn.addEventListener("click", () => {
   popup.style.display = "none";
 });
 
-// Switch between login and register forms
 toRegister.addEventListener("click", () => {
   loginForm.style.display = "none";
   registerForm.style.display = "block";
@@ -27,7 +43,6 @@ toLogin.addEventListener("click", () => {
   loginForm.style.display = "block";
 });
 
-// Close popup when clicking outside
 window.addEventListener("click", (e) => {
   if (e.target === popup) {
     popup.style.display = "none";
@@ -63,6 +78,7 @@ document
       alert("Registration successful!");
       localStorage.setItem("userId", data.id); // Save user ID
       popup.style.display = "none"; // Close the popup
+      block.style.display = "none";
     } else {
       alert(data.error);
     }
@@ -92,7 +108,7 @@ document.getElementById("loginButton").addEventListener("click", async () => {
   if (response.ok && user.name === username && user.password === password) {
     alert("Login successful!");
     popup.style.display = "none"; // Close the popup
-    api.style.display = "none";
+    api.style.display = "none"; // Hide the box
   } else {
     alert("Invalid username or password");
   }
@@ -113,7 +129,6 @@ function updateAccount() {
       });
     }
 
-    // Update only the provided fields, leaving others unchanged
     users[id] = {
       name: name || users[id].name,
       age: age || users[id].age,
