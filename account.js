@@ -1,12 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
+const cors = require("cors");
+const path = require("path"); // Required for resolving file paths
 
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Users API
 const users = {};
 
 app.post("/users", (req, res) => {
@@ -52,6 +59,11 @@ app.delete("/users/:id", (req, res) => {
   }
   delete users[id];
   res.status(204).send();
+});
+
+// Serve index.html on the root URL
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(PORT, () => {
