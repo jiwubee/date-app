@@ -161,15 +161,13 @@ ul li:hover {
 
 .block {
   position: absolute;
-  margin-top: 10em;
-  margin-left: 2.5em;
-  width: 30em;
-  height: 30em;
+  margin-top: 6em;
+  width: 35em;
+  height: calc(100vh - 10em);
   background-color: #fcd7dc;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1em;
 }
 */ .user-list ul {
   list-style-type: none;
